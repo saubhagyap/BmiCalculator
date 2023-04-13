@@ -20,7 +20,7 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
-        backgroundColor: Color(0xFF0A0E21),
+        backgroundColor: const Color(0xFF0A0E21),
       ),
       body: Column(
         children: [
@@ -30,7 +30,7 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColor,
-                  cardChild: IconContent(
+                  cardChild: const IconContent(
                     icon: FontAwesomeIcons.mars,
                     lable: 'MALE',
                   ),
