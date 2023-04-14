@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
+
+const bottomContainerHeight = 80.0;
+const activeCardColor = Color(0xFF1D1E33);
+const bottimContainerColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -11,50 +18,53 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('BMI CALCULATOR'),
-          backgroundColor: Color(0xFF0A0E21),
-        ),
-        body: Column(
-          children: [
-            Expanded(
-                child: Row(
-              children: [
-                Expanded(
-                    child: ReusableCard(
-                  colour: Color(0xFF1D1E33),
-                )),
-                Expanded(
-                    child: ReusableCard(
-                  colour: Color(0xFF1D1E33),
-                )),
-              ],
-            )),
-            Expanded(child: ReusableCard(colour: Color(0xFF1D1E33))),
-            Expanded(
-                child: Row(
-              children: [
-                Expanded(child: ReusableCard(colour: Color(0xFF1D1E33))),
-                Expanded(child: ReusableCard(colour: Color(0xFF1D1E33))),
-              ],
-            )),
-          ],
-        ));
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.colour});
-
-  final Color colour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: colour,
+      appBar: AppBar(
+        title: const Text('BMI CALCULATOR'),
+        backgroundColor: Color(0xFF0A0E21),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+              child: Row(
+            children: [
+              Expanded(
+                child: ReusableCard(
+                  colour: activeCardColor,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.mars,
+                    lable: 'MALE',
+                  ),
+                ),
+              ),
+              Expanded(
+                  child: ReusableCard(
+                colour: activeCardColor,
+                cardChild: IconContent(
+                  icon: FontAwesomeIcons.venus,
+                  lable: 'FEMALE',
+                ),
+              )),
+            ],
+          )),
+          Expanded(child: ReusableCard(colour: activeCardColor)),
+          Expanded(
+              child: Row(
+            children: [
+              Expanded(child: ReusableCard(colour: activeCardColor)),
+              Expanded(
+                child: ReusableCard(
+                  colour: activeCardColor,
+                ),
+              ),
+            ],
+          )),
+          Container(
+            color: bottimContainerColor,
+            margin: EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          )
+        ],
       ),
     );
   }
