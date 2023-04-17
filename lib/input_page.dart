@@ -36,43 +36,43 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
-                  child: ReusableCard(
-                    colour: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: const IconContent(
-                      icon: FontAwesomeIcons.mars,
-                      lable: 'MALE',
-                    ),
+                  colour: selectedGender == Gender.male
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  cardChild: const IconContent(
+                    icon: FontAwesomeIcons.mars,
+                    lable: 'MALE',
                   ),
                 ),
               ),
               Expanded(
-                  child: GestureDetector(
-                onTap: () {
+                  child: ReusableCard(
+                onPress: () {
                   setState(() {
                     selectedGender = Gender.female;
                   });
                 },
-                child: ReusableCard(
-                  colour: selectedGender == Gender.female
-                      ? activeCardColor
-                      : inactiveCardColor,
-                  cardChild: IconContent(
-                    icon: FontAwesomeIcons.venus,
-                    lable: 'FEMALE',
-                  ),
+                colour: selectedGender == Gender.female
+                    ? activeCardColor
+                    : inactiveCardColor,
+                cardChild: IconContent(
+                  icon: FontAwesomeIcons.venus,
+                  lable: 'FEMALE',
                 ),
               )),
             ],
           )),
-          Expanded(child: ReusableCard(colour: activeCardColor)),
+          Expanded(
+            child: ReusableCard(
+              colour: activeCardColor,
+            ),
+          ),
           Expanded(
               child: Row(
             children: [
