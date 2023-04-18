@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
-const bottimContainerColor = Color(0xFFEB1555);
+import 'constants.dart';
 
 enum Gender {
   male,
@@ -31,6 +27,7 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: const Color(0xFF0A0E21),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
               child: Row(
@@ -43,8 +40,8 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: selectedGender == Gender.male
-                      ? activeCardColor
-                      : inactiveCardColor,
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
                   cardChild: const IconContent(
                     icon: FontAwesomeIcons.mars,
                     lable: 'MALE',
@@ -59,8 +56,8 @@ class _InputPageState extends State<InputPage> {
                   });
                 },
                 colour: selectedGender == Gender.female
-                    ? activeCardColor
-                    : inactiveCardColor,
+                    ? kActiveCardColor
+                    : kInactiveCardColor,
                 cardChild: IconContent(
                   icon: FontAwesomeIcons.venus,
                   lable: 'FEMALE',
@@ -70,25 +67,46 @@ class _InputPageState extends State<InputPage> {
           )),
           Expanded(
             child: ReusableCard(
-              colour: activeCardColor,
+              colour: kActiveCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'HEIGHT',
+                    style: kLableTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text('180', style: kNumberTextStyle),
+                      Text(
+                        'cm',
+                        style: kLableTextStyle,
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
               child: Row(
             children: [
-              Expanded(child: ReusableCard(colour: activeCardColor)),
+              Expanded(child: ReusableCard(colour: kActiveCardColor)),
               Expanded(
                 child: ReusableCard(
-                  colour: activeCardColor,
+                  colour: kActiveCardColor,
                 ),
               ),
             ],
           )),
           Container(
-            color: bottimContainerColor,
+            color: kBottimContainerColor,
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           )
         ],
       ),
