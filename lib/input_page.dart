@@ -19,6 +19,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +96,7 @@ class _InputPageState extends State<InputPage> {
                       thumbColor: Color(0xFFEB1555),
                       overlayColor: Color(0x29EB1555),
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          RoundSliderThumbShape(enabledThumbRadius: 14.0),
                       overlayShape:
                           RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
@@ -117,7 +118,26 @@ class _InputPageState extends State<InputPage> {
           Expanded(
               child: Row(
             children: [
-              Expanded(child: ReusableCard(colour: kActiveCardColor)),
+              Expanded(
+                  child: ReusableCard(
+                colour: kActiveCardColor,
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'WEIGHT',
+                      style: kLableTextStyle,
+                    ),
+                    Text(
+                      weight.toString(),
+                      style: kNumberTextStyle,
+                    ),
+                    Row(
+                      children: [],
+                    ),
+                  ],
+                ),
+              )),
               Expanded(
                 child: ReusableCard(
                   colour: kActiveCardColor,
