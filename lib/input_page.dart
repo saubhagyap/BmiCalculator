@@ -133,7 +133,16 @@ class _InputPageState extends State<InputPage> {
                       style: kNumberTextStyle,
                     ),
                     Row(
-                      children: [],
+                      children: [
+                        Padding(padding: EdgeInsets.all(11.0)),
+                        RoundIconButton(
+                          icon: FontAwesomeIcons.plus,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIconButton(icon: FontAwesomeIcons.minus),
+                      ],
                     ),
                   ],
                 ),
@@ -153,6 +162,24 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({this.icon});
+
+  final IconData? icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      onPressed: () {},
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
