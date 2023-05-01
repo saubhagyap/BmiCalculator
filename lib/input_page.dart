@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'RoundIconButton.dart';
 
 enum Gender {
   male,
@@ -20,6 +21,7 @@ class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
   int weight = 60;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -116,56 +118,95 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-              child: Row(
-            children: [
-              Expanded(
+            child: Row(
+              children: [
+                Expanded(
                   child: ReusableCard(
-                colour: kActiveCardColor,
-                cardChild: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'WEIGHT',
-                      style: kLableTextStyle,
-                    ),
-                    Text(
-                      weight.toString(),
-                      style: kNumberTextStyle,
-                    ),
-                    Row(
+                    colour: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(padding: EdgeInsets.all(11.0)),
-                        RoundIconButton(
-                          icon: FontAwesomeIcons.plus,
-                          onPressed: () {
-                            setState(() {
-                              weight++;
-                            });
-                          },
+                        Text(
+                          'WEIGHT',
+                          style: kLableTextStyle,
                         ),
-                        SizedBox(
-                          width: 10.0,
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
                         ),
-                        RoundIconButton(
-                          icon: FontAwesomeIcons.minus,
-                          onPressed: () {
-                            setState(() {
-                              weight--;
-                            });
-                          },
+                        Row(
+                          children: [
+                            Padding(padding: EdgeInsets.all(11.0)),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              )),
-              Expanded(
-                child: ReusableCard(
-                  colour: kActiveCardColor,
+                Expanded(
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: kLableTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          )),
+              ],
+            ),
+          ),
           Container(
             color: kBottimContainerColor,
             margin: EdgeInsets.only(top: 10),
@@ -174,25 +215,6 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({this.icon, required this.onPressed});
-
-  final IconData? icon;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 6.0,
-      child: Icon(icon),
-      onPressed: onPressed,
-      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
